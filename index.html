@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Masal Perisi | Çocuğunuza özel masallar</title>
+    <meta
+      name="description"
+      content="Masal Perisi, çocuğunuzun yaşına ve ilgi alanlarına göre saniyeler içinde kişiselleştirilmiş masallar üreten bir mobil uygulamadır."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg-grad-start: #7a4dff;
+        --bg-grad-end: #f4e6ff;
+        --accent: #ffc96b;
+        --accent-soft: rgba(255, 201, 107, 0.15);
+        --text-dark: #241933;
+        --text-muted: #6a6478;
+        --card-bg: #ffffff;
+        --border-soft: rgba(255, 255, 255, 0.2);
+        --max-width: 1100px;
+        --radius-xl: 28px;
+        --radius-lg: 20px;
+        --shadow-soft: 0 22px 45px rgba(9, 5, 29, 0.35);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+          sans-serif;
+        background: radial-gradient(circle at top left, #8f66ff 0, #381c7a 32%, #120823 70%);
+        color: #ffffff;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .page {
+        min-height: 100vh;
+        background: radial-gradient(circle at top left, #8f66ff 0, #381c7a 32%, #120823 70%);
+        color: #fff;
+      }
+
+      .page::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(circle at 10% 20%, rgba(255, 201, 107, 0.15), transparent 65%),
+          radial-gradient(circle at 80% 0%, rgba(244, 230, 255, 0.4), transparent 55%);
+        opacity: 0.9;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .container {
+        width: 100%;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* HEADER */
+
+      header {
+        padding: 18px 0 10px;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .logo-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 999px;
+        background: radial-gradient(circle at 20% 0%, #ffffff, #f4e6ff 40%, #7a4dff 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+        font-size: 22px;
+      }
+
+      .logo-text-main {
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        font-size: 20px;
+        background: linear-gradient(90deg, #f4e6ff, #ffc96b);
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+
+      .logo-text-sub {
+        font-size: 11px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.7);
+        letter-spacing: 0.18em;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .nav-links a {
+        position: relative;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #ffc96b, #f4e6ff);
+        border-radius: 999px;
+        transition: width 0.2s ease-out;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .nav-badge {
+        font-size: 11px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+      }
+
+      /* HERO */
+
+      .hero {
+        padding: 10px 0 60px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+        gap: 32px;
+        align-items: center;
+      }
+
+      .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        padding: 5px 10px;
+        border-radius: 999px;
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid var(--border-soft);
+        margin-bottom: 14px;
+      }
+
+      .hero-eyebrow span.badge {
+        padding: 2px 8px;
+        border-radius: 999px;
+        background: rgba(255, 201, 107, 0.2);
+        font-size: 11px;
+      }
+
+      .hero-title {
+        font-size: clamp(32px, 4vw, 40px);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        margin: 0 0 12px;
+      }
+
+      .hero-title span.gradient {
+        background: linear-gradient(90deg, #f4e6ff, #ffc96b);
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+
+      .hero-subtitle {
+        font-size: 15px;
+        color: rgba(244, 230, 255, 0.85);
+        max-width: 430px;
+        line-height: 1.6;
+        margin-bottom: 22px;
+      }
+
+      .hero-list {
+        font-size: 13px;
+        color: rgba(244, 230, 255, 0.88);
+        list-style: none;
+        padding: 0;
+        margin: 0 0 24px;
+      }
+
+      .hero-list li {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 8px;
+      }
+
+      .hero-list-badge {
+        width: 18px;
+        height: 18px;
+        border-radius: 999px;
+        background: rgba(255, 201, 107, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+      }
+
+      .hero-actions {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .btn-primary {
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        color: #1e1238;
+        background: linear-gradient(135deg, #ffc96b, #ffe7b1);
+        box-shadow: 0 14px 35px rgba(0, 0, 0, 0.4);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-primary span.icon {
+        font-size: 16px;
+      }
+
+      .btn-ghost {
+        padding: 9px 15px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        background: rgba(0, 0, 0, 0.18);
+        cursor: pointer;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.9);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-ghost span.icon {
+        font-size: 16px;
+      }
+
+      .hero-note {
+        margin-top: 10px;
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      /* HERO PHONE MOCKUP */
+
+      .hero-phone-wrap {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .hero-phone {
+        width: 320px;
+        max-width: 100%;
+        border-radius: 36px;
+        padding: 14px;
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.15), rgba(41, 12, 78, 0.4));
+        box-shadow: var(--shadow-soft);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-phone-inner {
+        border-radius: 26px;
+        background: linear-gradient(180deg, #7a4dff, #f4e6ff);
+        padding: 18px 16px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        position: relative;
+      }
+
+      .hero-phone-badge {
+        font-size: 11px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(0, 0, 0, 0.2);
+        color: rgba(255, 255, 255, 0.85);
+        align-self: flex-start;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .hero-phone-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+      }
+
+      .hero-phone-title {
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .hero-phone-sub {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .hero-phone-fairy {
+        width: 40px;
+        height: 40px;
+        border-radius: 999px;
+        background: radial-gradient(circle at 25% 0%, #ffffff, #f4e6ff 45%, #7a4dff);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 26px;
+        box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+      }
+
+      .hero-phone-card {
+        margin-top: 6px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.16);
+        padding: 12px 10px;
+        font-size: 11px;
+        color: #200d3e;
+        backdrop-filter: blur(14px);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .hero-phone-card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 6px;
+      }
+
+      .hero-phone-tag {
+        font-size: 10px;
+        padding: 4px 8px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.8);
+      }
+
+      .hero-phone-story-lines {
+        font-size: 11px;
+        color: rgba(24, 7, 43, 0.92);
+        line-height: 1.5;
+      }
+
+      .hero-phone-progress {
+        margin-top: 4px;
+        height: 4px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.4);
+        overflow: hidden;
+      }
+
+      .hero-phone-progress-inner {
+        width: 60%;
+        height: 100%;
+        background: linear-gradient(90deg, #ffc96b, #ffe8b4);
+      }
+
+      .hero-phone-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 8px;
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.86);
+      }
+
+      /* FEATURES */
+
+      section {
+        padding: 60px 0;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .section-eyebrow {
+        font-size: 11px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.6);
+        margin-bottom: 6px;
+      }
+
+      .section-title {
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin: 0 0 6px;
+      }
+
+      .section-subtitle {
+        font-size: 13px;
+        color: rgba(244, 230, 255, 0.78);
+        max-width: 520px;
+        margin: 0 auto;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .feature-card {
+        background: rgba(10, 5, 30, 0.7);
+        border-radius: var(--radius-lg);
+        padding: 16px 14px 18px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: 0 16px 32px rgba(0, 0, 0, 0.45);
+      }
+
+      .feature-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        margin-bottom: 8px;
+      }
+
+      .feature-title {
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+
+      .feature-text {
+        font-size: 12px;
+        color: rgba(231, 222, 255, 0.82);
+        line-height: 1.6;
+      }
+
+      /* HOW IT WORKS */
+
+      .steps-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .step-card {
+        background: rgba(10, 5, 30, 0.8);
+        border-radius: var(--radius-lg);
+        padding: 16px 14px 18px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .step-number {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: rgba(255, 255, 255, 0.6);
+        margin-bottom: 4px;
+      }
+
+      .step-title {
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+
+      .step-text {
+        font-size: 12px;
+        color: rgba(231, 222, 255, 0.82);
+        line-height: 1.6;
+      }
+
+      .step-badge {
+        position: absolute;
+        right: 10px;
+        top: 12px;
+        font-size: 11px;
+        padding: 4px 8px;
+        border-radius: 999px;
+        background: rgba(0, 0, 0, 0.25);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      /* PARENTS SECTION */
+
+      .parents-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+        gap: 22px;
+        align-items: center;
+      }
+
+      .parents-card {
+        background: rgba(10, 5, 30, 0.85);
+        border-radius: var(--radius-xl);
+        padding: 22px 20px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      }
+
+      .parents-title {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .parents-text {
+        font-size: 13px;
+        color: rgba(231, 222, 255, 0.86);
+        line-height: 1.7;
+        margin-bottom: 14px;
+      }
+
+      .parents-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-size: 12px;
+        color: rgba(231, 222, 255, 0.9);
+      }
+
+      .parents-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        margin-bottom: 8px;
+      }
+
+      .pill {
+        font-size: 11px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: rgba(0, 0, 0, 0.28);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .pill-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        background: var(--accent);
+      }
+
+      .parents-sidecard {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-lg);
+        padding: 16px 14px 18px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        font-size: 12px;
+        color: rgba(244, 230, 255, 0.88);
+      }
+
+      .parents-sidecard h4 {
+        margin: 0 0 6px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      .mini-badge-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 8px;
+      }
+
+      .mini-badge {
+        font-size: 11px;
+        padding: 3px 7px;
+        border-radius: 999px;
+        background: rgba(0, 0, 0, 0.24);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      /* SCREENSHOTS PLACEHOLDER */
+
+      .screens-row {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .screen-card {
+        border-radius: 20px;
+        background: radial-gradient(circle at top, rgba(255, 255, 255, 0.12), rgba(7, 3, 25, 0.92));
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        padding: 10px;
+        min-height: 190px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .screen-tag {
+        font-size: 11px;
+        padding: 4px 8px;
+        border-radius: 999px;
+        background: rgba(0, 0, 0, 0.3);
+        align-self: flex-start;
+      }
+
+      .screen-title {
+        font-size: 13px;
+        font-weight: 600;
+        margin-top: 8px;
+      }
+
+      .screen-hint {
+        font-size: 11px;
+        color: rgba(231, 222, 255, 0.82);
+      }
+
+      .screen-placeholder {
+        margin-top: 10px;
+        border-radius: 16px;
+        background: rgba(0, 0, 0, 0.35);
+        border: 1px dashed rgba(255, 255, 255, 0.28);
+        padding: 18px 10px;
+        text-align: center;
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      /* FAQ */
+
+      .faq-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+        gap: 20px;
+        align-items: flex-start;
+      }
+
+      .faq-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      details {
+        background: rgba(10, 5, 30, 0.85);
+        border-radius: 16px;
+        padding: 10px 12px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        font-size: 13px;
+      }
+
+      summary {
+        cursor: pointer;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .faq-q {
+        font-weight: 500;
+      }
+
+      .faq-toggle {
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      details p {
+        margin: 8px 0 0;
+        font-size: 12px;
+        color: rgba(231, 222, 255, 0.9);
+        line-height: 1.6;
+      }
+
+      /* FOOTER */
+
+      footer {
+        padding: 24px 0 26px;
+        border-top: 1px solid rgba(255, 255, 255, 0.14);
+        margin-top: 20px;
+      }
+
+      .footer-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        font-size: 11px;
+        color: rgba(230, 230, 230, 0.7);
+        flex-wrap: wrap;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      .footer-links a {
+        color: rgba(230, 230, 230, 0.85);
+        text-decoration: none;
+      }
+
+      .footer-links a:hover {
+        text-decoration: underline;
+      }
+
+      /* RESPONSIVE */
+
+      @media (max-width: 880px) {
+        .hero-grid {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 26px;
+        }
+
+        .hero-phone-wrap {
+          justify-content: center;
+        }
+
+        .features-grid,
+        .steps-grid,
+        .screens-row {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .parents-grid,
+        .faq-grid {
+          grid-template-columns: minmax(0, 1fr);
+        }
+      }
+
+      @media (max-width: 640px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero {
+          padding-bottom: 46px;
+        }
+
+        .features-grid,
+        .steps-grid,
+        .screens-row {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        header {
+          padding-top: 14px;
+        }
+
+        .hero-title {
+          font-size: 28px;
+        }
+
+        .parents-card {
+          padding: 18px 16px;
+        }
+
+        section {
+          padding: 46px 0;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="page">
+      <header>
+        <div class="container">
+          <nav class="nav">
+            <div class="logo">
+<div class="logo-icon">
+  <img src="AppIcon.png" alt="Masal Perisi Logo">
+</div>
+              <div>
+                <div class="logo-text-main">Masal Perisi</div>
+                <div class="logo-text-sub">hayal gücü motoru</div>
+              </div>
+            </div>
+            <div class="nav-links">
+              <a href="#features">Özellikler</a>
+              <a href="#how-it-works">Nasıl çalışır?</a>
+              <a href="#parents">Ebeveynler için</a>
+              <a href="#faq">SSS</a>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <!-- HERO -->
+        <section class="hero">
+          <div class="container">
+            <div class="hero-grid">
+              <div>
+                <div class="hero-eyebrow">
+                  <span>Çocuklar için güvenli masal arkadaşı</span>
+                  <span class="badge">iOS uygulaması</span>
+                </div>
+
+                <h1 class="hero-title">
+                  <span class="gradient">Çocuğunuza özel</span> saniyeler içinde
+                  yeni masallar.
+                </h1>
+
+                <p class="hero-subtitle">
+                  Masal Perisi, çocuğunuzun yaşına ve ilgi alanlarına göre
+                  anında özgün, yumuşak ve pozitif masallar üreten bir mobil
+                  uygulamadır.
+                </p>
+
+                <ul class="hero-list">
+                  <li>
+                    <span class="hero-list-badge">✨</span>
+                    <span>Yaşa uygun, sakin ve güvenli içerik</span>
+                  </li>
+                  <li>
+                    <span class="hero-list-badge">🎭</span>
+                    <span>Hayvanlar, uzay, süper kahramanlar ve daha fazlası</span>
+                  </li>
+                  <li>
+                    <span class="hero-list-badge">⏱</span>
+                    <span>Kısa, orta veya uzun masal seçenekleri</span>
+                  </li>
+                </ul>
+
+                <div class="hero-actions">
+                  <button class="btn-primary">
+                    <span class="icon">📱</span>
+                    <span>Yakında App Store’da</span>
+                  </button>
+                  <button class="btn-ghost" onclick="document.getElementById('how-it-works').scrollIntoView({behavior:'smooth'})">
+                    <span class="icon">▶️</span>
+                    <span>Nasıl çalıştığını gör</span>
+                  </button>
+                </div>
+
+                <div class="hero-note">
+                  Masal Perisi şu anda geliştirme aşamasında. Yayınlandığında
+                  ilk haberdar olmak için bizi takip edin.
+                </div>
+              </div>
+
+              <!-- Phone mockup -->
+              <div class="hero-phone-wrap">
+                <div class="hero-phone">
+                  <div class="hero-phone-inner">
+                    <div class="hero-phone-badge">
+                      <span>⏱</span>
+                      <span>Masal yazılıyor...</span>
+                    </div>
+
+                    <div class="hero-phone-header">
+                      <div>
+                        <div class="hero-phone-title">Masal Perisi</div>
+                        <div class="hero-phone-sub">
+                          Çocuğunuzun hayal gücüne göre anında masallar
+                        </div>
+                      </div>
+                      <div class="hero-phone-fairy">
+                        <div class="logo-icon">
+                          <img width="30px" height="30px" src="MasalPerisiIcon.svg" alt="Masal Perisi Logo">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="hero-phone-card">
+                      <div class="hero-phone-card-header">
+                        <div>
+                          <div style="font-weight:600;">Uyku Öncesi Masal</div>
+                          <div style="font-size:10px;color:#5f4c90;">
+                            4-6 yaş • Hayvanlar &amp; macera
+                          </div>
+                        </div>
+                        <div class="hero-phone-tag">Kısa masal</div>
+                      </div>
+
+                      <div class="hero-phone-story-lines">
+                        Bir zamanlar, mor ağaçlarla dolu sessiz bir ormanda
+                        yaşayan minik bir tavşan varmış. Bu tavşan, her gece
+                        uyumadan önce yıldızlarla konuşmayı çok severmiş...
+                      </div>
+
+                      <div class="hero-phone-progress">
+                        <div class="hero-phone-progress-inner"></div>
+                      </div>
+
+                      <div class="hero-phone-bottom">
+                        <span>✨ Masal Perisi senin için yazıyor</span>
+                        <span>00:08</span>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FEATURES -->
+        <section id="features">
+          <div class="container">
+            <div class="section-header">
+              <div class="section-eyebrow">Özellikler</div>
+              <h2 class="section-title">Masal Perisi neler sunar?</h2>
+              <p class="section-subtitle">
+                Çocuğunuzun yaşını, sevdiği karakterleri ve masal uzunluğunu
+                seçin. Geri kalanını Masal Perisi halleder.
+              </p>
+            </div>
+
+            <div class="features-grid">
+              <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <div class="feature-title">Yaşa uygun içerik</div>
+                <div class="feature-text">
+                  3-5, 6-8 ve 9+ yaş grupları için ayrı dil ve içerik
+                  seviyeleri. Her yaşa özel anlatım temposu ve kelime seçimi.
+                </div>
+              </div>
+
+              <div class="feature-card">
+                <div class="feature-icon">🎭</div>
+                <div class="feature-title">Karakter &amp; tema seçimi</div>
+                <div class="feature-text">
+                  Hayvanlar, uzay, süper kahramanlar, prensesler, duygular,
+                  arkadaşlık, cesaret ve daha fazlası. Çocuğunuzun ilgi
+                  alanına göre masallar.
+                </div>
+              </div>
+
+              <div class="feature-card">
+                <div class="feature-icon">⏱</div>
+                <div class="feature-title">Farklı masal uzunlukları</div>
+                <div class="feature-text">
+                  “Kısa”, “Orta” ve “Uzun” masal seçenekleriyle uyku öncesi,
+                  kısa yolculuklar veya sakin zamanlara göre süre
+                  ayarlayabilirsiniz.
+                </div>
+              </div>
+
+              <div class="feature-card">
+                <div class="feature-icon">📚</div>
+                <div class="feature-title">Favori masal arşivi</div>
+                <div class="feature-text">
+                  En çok sevilen masalları favorilere ekleyin, tekrar tekrar
+                  okuyun. Çocuğunuzun favori karakterleri zamanla şekillensin.
+                </div>
+              </div>
+
+              <div class="feature-card">
+                <div class="feature-icon">🌙</div>
+                <div class="feature-title">Yumuşak ve sakin anlatım</div>
+                <div class="feature-text">
+                  Sert, korkutucu, yaşa uygun olmayan sahneler ve aşırı
+                  uyarıcı öğeler yerine, sakinleştirici ve pozitif masal
+                  kurguları.
+                </div>
+              </div>
+
+              <div class="feature-card">
+                <div class="feature-icon">🧠</div>
+                <div class="feature-title">Hayal gücünü destekler</div>
+                <div class="feature-text">
+                  Çocuğunuzun seçtiği temalar üzerinden empati, problem
+                  çözme ve yaratıcılık gibi becerileri destekleyen hikaye
+                  kurguları.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- HOW IT WORKS -->
+        <section id="how-it-works">
+          <div class="container">
+            <div class="section-header">
+              <div class="section-eyebrow">NASIL ÇALIŞIR?</div>
+              <h2 class="section-title">3 adımda kişiselleştirilmiş masal</h2>
+              <p class="section-subtitle">
+                Masal Perisi, ebeveynler için basit; çocuklar için büyülü bir
+                deneyim sunar.
+              </p>
+            </div>
+
+            <div class="steps-grid">
+              <div class="step-card">
+                <div class="step-number">ADIM 1</div>
+                <div class="step-title">Yaş aralığını seçin</div>
+                <div class="step-text">
+                  Uygulama içinden çocuğunuzun yaş grubunu seçin. Dil, kelime
+                  seviyesi ve masal yapısı buna göre ayarlanır.
+                </div>
+                <div class="step-badge">🎚 Yaşa göre uyarlanır</div>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">ADIM 2</div>
+                <div class="step-title">Karakter ve temaları belirleyin</div>
+                <div class="step-text">
+                  Hayvanlar, uzay, duygular, aile, arkadaşlık ve daha bir
+                  sürü kategori arasından seçim yapın. Birden fazla tema
+                  ekleyebilirsiniz.
+                </div>
+                <div class="step-badge">🎭 Kişiselleştirme</div>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">ADIM 3</div>
+                <div class="step-title">“Hikayemi Yarat”a dokunun</div>
+                <div class="step-text">
+                  Masal Perisi birkaç saniye içinde çocuğunuza özel masalı
+                  yazar. Siz de ister yüksek sesle okuyun, ister birlikte
+                  yeni sonlar hayal edin.
+                </div>
+                <div class="step-badge">✨ Hazır olduğunda bildirim</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PARENTS -->
+        <section id="parents">
+          <div class="container">
+            <div class="section-header">
+              <div class="section-eyebrow">EBEVEYNLER İÇİN</div>
+              <h2 class="section-title">Güvenli, kontrol edilebilir, şeffaf</h2>
+              <p class="section-subtitle">
+                Masal Perisi, çocuğunuzun ekran başında geçirdiği zamanı
+                kaliteli ve güvenli bir deneyime dönüştürmeyi hedefler.
+              </p>
+            </div>
+
+            <div class="parents-grid">
+              <div class="parents-card">
+                <div class="pill">
+                  <span class="pill-dot"></span>
+                  <span>Sizin kontrolünüzde bir masal arkadaşı</span>
+                </div>
+
+                <h3 class="parents-title">İçerik üzerinde her zaman söz sizde</h3>
+                <p class="parents-text">
+                  Uygulama, çocuğunuzun yaş aralığı ve seçtiğiniz temalar
+                  doğrultusunda masal kurguları üretir. Korkutucu, şiddet
+                  içeren veya yaşa uygun olmayan sahnelerden kaçınacak şekilde
+                  tasarlanır. Yine de, son karar her zaman sizde; masalları
+                  önceden okuyabilir, dilediğiniz gibi atlayıp
+                  uyarlayabilirsiniz.
+                </p>
+
+                <ul class="parents-list">
+                  <li>
+                    <span>🛡</span>
+                    <span
+                      >Şiddet, nefret söylemi, yetişkin temaları gibi
+                      içeriklerden kaçınmayı hedefleyen filtreler</span
+                    >
+                  </li>
+                  <li>
+                    <span>📵</span>
+                    <span
+                      >Masal odaklı minimal arayüz: Oyun, bildirim ve
+                      dikkat dağıtıcı öğeler yok</span
+                    >
+                  </li>
+                  <li>
+                    <span>👨‍👩‍👧</span>
+                    <span
+                      >Masallar ebeveyn–çocuk birlikte okuma deneyimine
+                      göre tasarlandı</span
+                    >
+                  </li>
+                </ul>
+              </div>
+
+              <div class="parents-sidecard">
+                <h4>Neden Masal Perisi?</h4>
+                <p>
+                  Uykudan önce “hadi masal anlat” diyen bir çocuk ve
+                  günün yorgunluğunu taşıyan bir ebeveyn... Bu ikisini
+                  yumuşak bir şekilde buluşturmak için tasarlandı.
+                </p>
+
+                <div class="mini-badge-row">
+                  <div class="mini-badge">🌙 Uyku öncesi rutinlerin parçası</div>
+                  <div class="mini-badge">⏱ 10–15 saniyede hazır masal</div>
+                  <div class="mini-badge">📖 Yeniden okunabilir favoriler</div>
+                  <div class="mini-badge">🧩 Kişiselleştirilebilir temalar</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SCREENSHOTS PLACEHOLDER -->
+        <section id="screens">
+          <div class="container">
+            <div class="section-header">
+              <div class="section-eyebrow">UYGULAMADAN KARELER</div>
+              <h2 class="section-title">Masal Perisi ekranları</h2>
+            </div>
+
+            <div class="screens-row">
+              <div class="screen-card">
+                <div class="screen-tag">Ana ekran</div>
+                <div class="screen-title">Yaş &amp; tema seçimi</div>
+                <div class="screen-hint">
+                  Ana ekrandan yaş aralığı, kategoriler ve favori masallara
+                  erişim.
+                </div>
+                <div class="screen-placeholder">
+                  Buraya <strong>StoryBuilderView</strong> ekranı
+                  screenshot’ını ekleyebilirsin.
+                </div>
+              </div>
+
+              <div class="screen-card">
+                <div class="screen-tag">Masal yazımı</div>
+                <div class="screen-title">“Masal yazılıyor” pop-up</div>
+                <div class="screen-hint">
+                  Lottie animasyonu ve “Masal yazılıyor, birazdan hazır”
+                  mesajının yer aldığı bekleme ekranı.
+                </div>
+                <div class="screen-placeholder">
+                  Buraya <strong>loading popup + GenAnim</strong> ekran
+                  screenshot’ını ekleyebilirsin.
+                </div>
+              </div>
+
+              <div class="screen-card">
+                <div class="screen-tag">Okuma ekranı</div>
+                <div class="screen-title">Hikaye görüntüleme</div>
+                <div class="screen-hint">
+                  Üretilen masalın temiz, okunabilir şekilde sunulduğu
+                  ekran.
+                </div>
+                <div class="screen-placeholder">
+                  Buraya <strong>StoryView</strong> ekranı screenshot’ını
+                  ekleyebilirsin.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq">
+          <div class="container">
+            <div class="section-header">
+              <div class="section-eyebrow">SIK SORULAN SORULAR</div>
+              <h2 class="section-title">Merak edilenler</h2>
+            </div>
+
+            <div class="faq-grid">
+              <div class="faq-list">
+                <details>
+                  <summary>
+                    <span class="faq-q">
+                      Masal Perisi nasıl masal üretiyor?
+                    </span>
+                    <span class="faq-toggle">＋</span>
+                  </summary>
+                  <p>
+                    Masal Perisi, arka planda yapay zeka destekli bir metin
+                    üretim sistemini kullanır. Siz yaş aralığını, temaları ve
+                    masal uzunluğunu seçtikten sonra, bu bilgilere göre
+                    çocuğunuza özel bir masal kurgular ve birkaç saniye içinde
+                    sunar.
+                  </p>
+                </details>
+
+                <details>
+                  <summary>
+                    <span class="faq-q">
+                      İçerikler çocuklar için güvenli mi?
+                    </span>
+                    <span class="faq-toggle">＋</span>
+                  </summary>
+                  <p>
+                    Uygulama, çocuklara yönelik pozitif, yumuşak ve sakin
+                    içerikler üretmeye odaklanır. Şiddet, nefret söylemi,
+                    yetişkin temaları gibi alanlardan kaçınmayı hedefler.
+                    Yine de her masalı önce gözden geçirmenizi ve çocuğunuza
+                    en uygun gördüğünüz şekilde uyarlamanızı öneririz.
+                  </p>
+                </details>
+
+                <details>
+                  <summary>
+                    <span class="faq-q">
+                      Uygulama internet bağlantısı gerektiriyor mu?
+                    </span>
+                    <span class="faq-toggle">＋</span>
+                  </summary>
+                  <p>
+                    Evet. Masallar anlık olarak üretildiği için internet
+                    bağlantısına ihtiyaç vardır. Favorilere eklediğiniz
+                    masalları daha sonra tekrar okumak için çevrim içi
+                    olmanız gerekmez; ancak yeni masal üretmek için gereklidir.
+                  </p>
+                </details>
+
+                <details>
+                  <summary>
+                    <span class="faq-q">
+                      Masalların süresini ben seçebiliyor muyum?
+                    </span>
+                    <span class="faq-toggle">＋</span>
+                  </summary>
+                  <p>
+                    Evet. “Kısa”, “Orta” ve “Uzun” seçenekleri ile masal
+                    uzunluğunu belirleyebilirsiniz. Örneğin uyku öncesi için
+                    kısa, hafta sonu sakin bir zaman için daha uzun masallar
+                    tercih edebilirsiniz.
+                  </p>
+                </details>
+              </div>
+
+              <div>
+                <div class="parents-sidecard">
+                  <h4>Gizlilik &amp; veri kullanımı</h4>
+                  <p>
+                    Masal Perisi, masal oluşturmak için yalnızca seçtiğiniz
+                    yaş aralığı ve temalar gibi sınırlı bilgileri kullanır.
+                    Çocuğunuzun adı gibi isteğe bağlı bilgiler yalnızca masal
+                    içinde kullanılmak üzere işlenir ve üçüncü taraflarla
+                    paylaşılmaz.
+                  </p>
+                  <p style="margin-top:8px;">
+                    Uygulamanın yayınlanmasıyla birlikte burada
+                    <strong>Gizlilik Politikası</strong> ve
+                    <strong>Kullanım Koşulları</strong> bağlantıları yer
+                    alacaktır.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div class="container">
+          <div class="footer-row">
+            <div class="footer-links">
+              <a href="#features">Özellikler</a>
+              <a href="#parents">Ebeveynler için</a>
+              <a href="#faq">SSS</a>
+              <a href="mailto:info@masalperisi.app">Bize ulaşın</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      // Yıl otomatik güncelleme
+      document.getElementById("year").textContent =
+        new Date().getFullYear();
+    </script>
+  </body>
+</html>
